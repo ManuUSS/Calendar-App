@@ -1,6 +1,9 @@
+import { Navbar } from '../';
 
 export const CalendarPage = () => {
   return (
-    <div>Claendario</div>
+    <>
+      <Navbar />
+    </>
   )
 }
