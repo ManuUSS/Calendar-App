@@ -16,4 +16,4 @@ export const uiSlice = createSlice({
 });
 
 
-export const { onOpenDateModal } = uiSlice.actions;
+export const { onOpenDateModal, onClsoeDateModal } = uiSlice.actions;
