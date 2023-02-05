@@ -29,7 +29,7 @@ export const CalendarModal = () => {
  
     const [ formSubmitted, setFormSubmitted ] = useState( false );
     const { isDateModalOpen, closeDateModal } = useUIStore();
-    const { activeEvent } = useCalendarStore();
+    const { activeEvent, startSavingEvent   } = useCalendarStore();
 
     const [ formValues, setFormValues ] = useState({
         title: '',
@@ -70,7 +70,7 @@ export const CalendarModal = () => {
         })
     }
 
-    const onSubmitForm = ( event ) => {
+    const onSubmitForm = async ( event ) => {
         event.preventDefault();
         setFormSubmitted( true );
         const diferrence = differenceInSeconds( formValues.end, formValues.start );
@@ -81,7 +81,9 @@ export const CalendarModal = () => {
 
         if( formValues.title.length <= 0 ) return;
 
-
+        await startSavingEvent( formValues );
+        closeDateModal();
+        setFormSubmitted( false );
     
     }
 
