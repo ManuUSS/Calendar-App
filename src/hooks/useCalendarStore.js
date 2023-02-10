@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { calendarApi } from "../api";
 import { convertEventToDateEvents } from "../helpers";
-import { onAddNewEvent, onDeleteEvent, onSetActiveEvent, onUpadateEvent } from "../store";
+import { onAddNewEvent, onDeleteEvent, onLoadEvents, onSetActiveEvent, onUpadateEvent } from "../store";
 
 
 export const useCalendarStore = () => {
@@ -37,7 +37,7 @@ export const useCalendarStore = () => {
             
             const { data } = await calendarApi.get('/events'); 
             const events = convertEventToDateEvents( data.events );
-            
+            dispatch( onLoadEvents( events ) );
 
         } catch ( error ) {
             console.log( error );
