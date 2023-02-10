@@ -11,7 +11,7 @@ calendarApi.interceptors.request.use( config => {
 
     config.headers = {
         ...config,
-        'x-token': localStorage.getItem('token')
+        'x-token': localStorage.getItem('token') | ''
     }
 
     return config;
